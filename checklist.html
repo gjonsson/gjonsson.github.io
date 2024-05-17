@@ -31,8 +31,8 @@
 			margin-bottom: 10px;
 		}
 		ul li input[type="checkbox"] {
-			width: 20px;
-			height: 20px;
+			width: 40px; /* 200% larger */
+			height: 40px; /* 200% larger */
 			margin-right: 10px;
 		}
 		button {
@@ -46,12 +46,17 @@
 		button:hover {
 			background-color: #34495e;
 		}
+		@media print {
+			.no-print {
+				display: none;
+			}
+		}
 	</style>
 </head>
 <body>
 	<div class="container">
 		<h1>Tékklisti fyrir opnun vefsíðu</h1>
-		<input type="text" id="website" placeholder="Sláðu inn vefsíðuna sem þú ert að vinna á">
+		<input type="text" id="website" class="no-print" placeholder="Sláðu inn vefsíðuna sem þú ert að vinna á">
 		
 		<h2>Tæknilegir þættir</h2>
 		<ul>
@@ -94,19 +99,19 @@
 			<li><input type="checkbox">Afritun: Gakktu úr skugga um að öll gögn séu afrituð og auðvelt að endurheimta ef eitthvað fer úrskeiðis.</li>
 		</ul>
 
-		<button onclick="printChecklist()">Prenta Tékklista</button>
+		<button class="no-print" onclick="printChecklist()">Prenta Tékklista</button>
 	</div>
 
 	<script>
 		function printChecklist() {
 			const website = document.getElementById('website').value;
-			const checklistContent = `
+			const originalContent = document.body.innerHTML;
+			const printContent = `
 				<h1>Tékklisti fyrir opnun vefsíðu</h1>
 				<p>Vefsíða: ${website}</p>
-				${document.querySelector('.container').innerHTML.replace(/<input type="text".*?>/, '')}
+				${document.querySelector('.container').innerHTML.replace(/<input.*?>/g, '')}
 			`;
-			const originalContent = document.body.innerHTML;
-			document.body.innerHTML = checklistContent;
+			document.body.innerHTML = printContent;
 			window.print();
 			document.body.innerHTML = originalContent;
 		}
