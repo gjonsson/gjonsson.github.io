@@ -101,5 +101,20 @@
 
 		<button class="no-print" onclick="printChecklist()">Prenta Tékklista</button>
 	</div>
+
+	<script>
+		function printChecklist() {
+			const website = document.getElementById('website').value;
+			const printContent = `
+				<h1>Tékklisti fyrir opnun vefsíðu</h1>
+				<p>Vefsíða: ${website}</p>
+				${document.querySelector('.container').innerHTML.replace(/<h1.*?<\/h1>/, '').replace(/<input.*?>/, '')}
+			`;
+			const originalContent = document.body.innerHTML;
+			document.body.innerHTML = printContent;
+			window.print();
+			document.body.innerHTML = originalContent;
+		}
+	</script>
 </body>
 </html>
