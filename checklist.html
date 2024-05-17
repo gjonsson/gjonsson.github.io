@@ -31,6 +31,8 @@
 			margin-bottom: 10px;
 		}
 		ul li input[type="checkbox"] {
+			width: 20px;
+			height: 20px;
 			margin-right: 10px;
 		}
 		button {
@@ -98,12 +100,12 @@
 	<script>
 		function printChecklist() {
 			const website = document.getElementById('website').value;
-			const originalContent = document.body.innerHTML;
 			const checklistContent = `
 				<h1>Tékklisti fyrir opnun vefsíðu</h1>
 				<p>Vefsíða: ${website}</p>
-				${document.querySelector('.container').innerHTML}
+				${document.querySelector('.container').innerHTML.replace(/<input type="text".*?>/, '')}
 			`;
+			const originalContent = document.body.innerHTML;
 			document.body.innerHTML = checklistContent;
 			window.print();
 			document.body.innerHTML = originalContent;
