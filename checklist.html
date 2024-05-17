@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tékklisti fyrir opnun vefsíðu</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 20px;
+		}
+		.container {
+			max-width: 800px;
+			margin: auto;
+		}
+		h1, h2 {
+			color: #2c3e50;
+		}
+		input[type="text"] {
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+		ul {
+			list-style-type: none;
+			padding: 0;
+		}
+		ul li {
+			margin-bottom: 10px;
+		}
+		ul li input[type="checkbox"] {
+			margin-right: 10px;
+		}
+		button {
+			background-color: #2c3e50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		button:hover {
+			background-color: #34495e;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Tékklisti fyrir opnun vefsíðu</h1>
+		<input type="text" id="website" placeholder="Sláðu inn vefsíðuna sem þú ert að vinna á">
+		
+		<h2>Tæknilegir þættir</h2>
+		<ul>
+			<li><input type="checkbox">SSL vottorð: Tryggja að vefsíðan sé örugg með gilt SSL vottorð (HTTPS).</li>
+			<li><input type="checkbox">Brotnar tenglar: Athuga öll innri og ytri tengsl til að tryggja að engir tenglar séu brotnir.</li>
+			<li><input type="checkbox">Hraðapróf: Keyra hraðapróf (t.d. Google PageSpeed Insights) og gera nauðsynlegar betrumbætur.</li>
+			<li><input type="checkbox">Vafrasamhæfi: Próf á mismunandi vöfrum (Chrome, Firefox, Safari, Edge) og tækjum (skjáborð, spjaldtölvur, snjallsímar).</li>
+			<li><input type="checkbox">Svarsmíð (Responsive Design): Tryggja að vefsíðan sé fullkomlega svarsmíðaður (responsive) og virki vel á öllum skjástærðum.</li>
+			<li><input type="checkbox">SEO grunngerð: Gakktu úr skugga um að titlar, meta lýsingar og hausar (H1, H2, H3) séu rétt uppsettir.</li>
+			<li><input type="checkbox">Öryggispróf: Athuga hvort vefsíðan sé varin gegn algengum árásum (t.d. SQL Injection, XSS).</li>
+			<li><input type="checkbox">Gagnavernd (GDPR): Tryggja að vefsíðan uppfylli gagnaverndarlög, ef við á (t.d. GDPR).</li>
+		</ul>
+
+		<h2>Innihald</h2>
+		<ul>
+			<li><input type="checkbox">Prófarkalestur: Lestur yfir allt efni til að leiðrétta stafsetningar- og málfræðivillur.</li>
+			<li><input type="checkbox">Myndgæði: Athuga allar myndir fyrir gæði og tryggja að þær hlaðist hratt.</li>
+			<li><input type="checkbox">Fyrirsagnir og textar: Gakktu úr skugga um að allar fyrirsagnir og textar séu skýrir og réttir.</li>
+			<li><input type="checkbox">Lagalegar upplýsingar: Athuga að allar lagalegar upplýsingar (t.d. skilmálar og persónuverndarstefna) séu til staðar og uppfærðar.</li>
+		</ul>
+
+		<h2>Notendaviðmót (UI) og Notendaupplifun (UX)</h2>
+		<ul>
+			<li><input type="checkbox">Nefndaruppsetning: Tryggja að leiðakerfi vefsíðunnar sé skýrt og auðvelt í notkun.</li>
+			<li><input type="checkbox">Hnappar og form: Athuga að allir hnappar og form virki rétt.</li>
+			<li><input type="checkbox">Leitarvirkni: Tryggja að leitarboxið virki rétt og skili viðeigandi niðurstöðum.</li>
+			<li><input type="checkbox">Aðgengi: Tryggja að vefsíðan sé aðgengileg fyrir alla notendur, þar á meðal þá með fötlun.</li>
+		</ul>
+
+		<h2>Greining og Rakning</h2>
+		<ul>
+			<li><input type="checkbox">Google Analytics: Setja upp og prófa Google Analytics eða aðrar greiningartól.</li>
+			<li><input type="checkbox">Rakningar Pixlar: Setja upp Facebook Pixel, Google Tag Manager eða önnur rakningartól.</li>
+		</ul>
+
+		<h2>Prófanir og Yfirferðir</h2>
+		<ul>
+			<li><input type="checkbox">Notendaprófanir: Láta raunverulega notendur prófa vefsíðuna og gefa endurgjöf.</li>
+			<li><input type="checkbox">Yfirferð: Fá nokkra starfsmenn til að fara í gegnum tékklistann og yfirfara hvern þátt.</li>
+			<li><input type="checkbox">Afritun: Gakktu úr skugga um að öll gögn séu afrituð og auðvelt að endurheimta ef eitthvað fer úrskeiðis.</li>
+		</ul>
+
+		<button onclick="printChecklist()">Prenta Tékklista</button>
+	</div>
+
+	<script>
+		function printChecklist() {
+			const website = document.getElementById('website').value;
+			const originalContent = document.body.innerHTML;
+			const checklistContent = `
+				<h1>Tékklisti fyrir opnun vefsíðu</h1>
+				<p>Vefsíða: ${website}</p>
+				${document.querySelector('.container').innerHTML}
+			`;
+			document.body.innerHTML = checklistContent;
+			window.print();
+			document.body.innerHTML = originalContent;
+		}
+	</script>
+</body>
+</html>
